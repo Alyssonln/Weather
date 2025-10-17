@@ -1,7 +1,19 @@
-Aplicação web simples que exibe a previsão do tempo atual de qualquer cidade, utilizando a OpenWeatherMap API.
-Desenvolvido com HTML, CSS e JavaScript, este projeto tem como objetivo praticar consumo de APIs e manipulação de DOM.
+# 🌤️ Weather App
 
-Funcionalidades:
+Aplicação web que exibe a **previsão do tempo em tempo real** de qualquer cidade, utilizando a **OpenWeatherMap API**.  
+Desenvolvido com **HTML, CSS e JavaScript puro**, focado em simplicidade, responsividade e design elegante.
+
+---
+
+## ✨ Funcionalidades
+
 - Busca por cidade
-- Exibe temperatura atual, sensação térmica, clima, umidade e vento
-- Interface responsiva e intuitiva
+- Exibição de temperatura, clima e umidade
+- Interface moderna com efeito _glassmorphism_
+- Totalmente responsivo
+
+---
+
+## 🧩 Tecnologias
+
+HTML • CSS • JavaScript • OpenWeatherMap API

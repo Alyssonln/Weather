@@ -5,95 +5,183 @@
     font-family: "Rubik", sans-serif;
 }
 
+:root {
+    --bg-overlay: rgba(120, 160, 255, 0.28);
+    --bg-input: rgba(255, 255, 255, 0.16);
+    --text: #fff;
+    --muted: rgba(255, 255, 255, 0.7);
+
+    --radius: 24px;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+    --space-1: 8px;
+    --space-2: 12px;
+    --space-3: 18px;
+    --space-4: 24px;
+    --space-5: 36px;
+
+    --fs-xxl: clamp(26px, 3.5vw, 32px);
+    --fs-xl: clamp(22px, 3vw, 28px);
+    --fs-lg: clamp(18px, 2.4vw, 22px);
+    --fs-md: clamp(14px, 2vw, 16px);
+}
+
 body {
-    height: 100vh;
-    width: 100vw;
+    min-height: 100dvh;
+    width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-image: url(./img/background-img.jpg);
     background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: var(--space-4);
+    gap: 12px;
 }
 
 .principal {
-    background: #422680;
-    opacity: 0.6;
-    border-radius: 25px;
-    padding: 40px;
-    width: 80%;
-    max-width: 600px;
+    width: min(680px, 92vw);
+    background: var(--bg-overlay);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border-radius: var(--radius);
+    padding: var(--space-5);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+    transition: transform 120ms ease, box-shadow 200ms ease, background 200ms ease;
+}
+
+.principal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.35);
+    background: rgba(120, 160, 255, 0.32);
 }
 
 .area-input {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-2);
     align-items: center;
-    justify-content: space-between;
 }
 
 .input-cidade {
     border: none;
     outline: none;
-    padding: 20px;
-    border-radius: 25px;
-    font-size: 30px;
-    background-color: #b3b2b22f;
-    color: #fff;
-    width: calc(100% - 100px);
+    padding: 16px 18px;
+    border-radius: 999px;
+    font-size: var(--fs-lg);
+    background-color: var(--bg-input);
+    color: var(--text);
+    width: 100%;
 }
 
+.input-cidade::placeholder {
+    color: var(--muted);
+}
+
+.input-cidade:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.7);
+    outline-offset: 2px;
+}
 
 .btn-buscar {
     border: none;
     outline: none;
     padding: 10px;
-    border-radius: 50px;
-    background-color: #b3b2b22f;
+    border-radius: 999px;
+    background-color: var(--bg-input);
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 100ms ease, background-color 150ms ease, box-shadow 150ms ease;
+}
+
+.btn-buscar:hover {
+    background-color: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.btn-buscar:active {
+    transform: scale(0.96);
 }
 
 .img-buscar {
-    width: 40px;
+    width: 32px;
+    height: 32px;
 }
 
 .area-info {
-    margin-top: 20px;
+    margin-top: var(--space-4);
 }
 
 .cidade {
-    color: #fff;
-    font-size: 30px;
-    font-weight: 300;
+    color: var(--text);
+    font-size: var(--fs-xxl);
+    font-weight: 400;
 }
 
 .temperatura {
-    font-size: 25px;
-    color: #fff;
-    margin-top: 20px;
-    font-weight: 300
+    font-size: var(--fs-xl);
+    color: var(--text);
+    margin-top: var(--space-2);
+    font-weight: 300;
 }
 
 .area-icone {
     display: flex;
     align-items: center;
-    margin-top: 20px;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
     justify-content: flex-start;
 }
 
 .img-icone {
-    width: 60px;
-    margin-right: -20px;
-    margin-left: -10px;
+    width: clamp(48px, 6.5vw, 64px);
+    height: auto;
+    display: block;
 }
 
 .previsao {
-    color: #fff;
-    margin-left: 20px;
-    font-size: 15px;
+    color: var(--text);
+    font-size: var(--fs-md);
     text-transform: capitalize;
+    opacity: 0.95;
 }
 
 .umidade {
+    color: var(--text);
+    margin-top: var(--space-2);
+    font-size: var(--fs-md);
+    opacity: 0.95;
+}
+
+#status {
     color: #fff;
-    margin-top: 20px;
     font-size: 15px;
+    text-align: center;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    min-height: 20px;
+}
+
+@media (max-width: 560px) {
+    .principal {
+        padding: var(--space-4);
+    }
+
+    .area-input {
+        grid-template-columns: 1fr;
+        gap: var(--space-2);
+    }
+
+    .btn-buscar {
+        padding: 12px;
+    }
+
+    .img-buscar {
+        width: 28px;
+        height: 28px;
+    }
 }
